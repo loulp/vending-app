@@ -13,7 +13,7 @@ export class PaymentService {
   isValid: boolean;
 
   receiveTransaction(transaction: transaction): Observable<any> {
-    return of(this.validTransaction(transaction.price)).pipe(delay(3000));
+    return of(this.validTransaction(transaction.price)).pipe(delay(5000));
   }
 
   validTransaction(price: number) {

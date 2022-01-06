@@ -10,6 +10,6 @@ export class ProductionService {
   constructor() {}
 
   startProduction(transaction: transaction): Observable<any> {
-    return of(true).pipe(delay(3000));
+    return of(true).pipe(delay(5000));
   }
 }

@@ -59,19 +59,18 @@ export class ChoixComponent implements OnInit {
         this.paymentService.receiveTransaction(this.transaction).subscribe(
           (res) => {
             if (res) {
-              console.log("paiement fini");
               this.transaction.state = "PRODUCING";
 
               this.sublist.push(
                 this.prodService
                   .startProduction(this.transaction)
                   .subscribe((res) => {
-                    this.pubService.sendCommand(this.transaction).subscribe(
+                    this.sublist.push(this.pubService.sendCommand(this.transaction).subscribe(
                       (res) => {},
                       (err) => {
                         console.log(err);
                       }
-                    );
+                    ));
                     this.resetTransaction();
                   })
               );
