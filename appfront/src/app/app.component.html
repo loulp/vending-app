@@ -1,0 +1,3 @@
+<div *ngIf="transaction">
+  <app-choix [transaction]="transaction" (transactionChange)="showWaiting($event)"></app-choix>
+</div>

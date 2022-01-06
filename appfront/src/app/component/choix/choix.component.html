@@ -1,0 +1,31 @@
+<div style="margin-left: 20%;">
+  <button class="cancel" (click)="annuler()">Annuler</button>
+  <div *ngIf="transaction.state == 'CHOOSING'">
+    <app-boisson id="boisson" boisson="café" (choose)="choose($event)"></app-boisson>
+    <app-boisson boisson="chocolat" (choose)="choose($event)"></app-boisson>
+
+    <h4 *ngIf="missingField" class="errorMsg">Choissisez sucre & boisson</h4>
+    <button (click)="sugarChoice(true)">Avec Sucre</button>
+    <button (click)="sugarChoice(false)">Sans Sucre</button>
+    <button class="valider" (click)="submit()">Valider</button>
+  </div>
+  <div *ngIf="transaction.state !== 'CHOOSING'">
+    <img [src]="pub" alt="" style="width: 200px" />
+  </div>
+  <div *ngIf="transaction.state == 'PAYING'">
+    <img
+      src="https://cdn-icons-png.flaticon.com/512/1019/1019709.png"
+      alt=""
+      style="width: 50px; margin: 3%"
+    />
+    <p>paiement en cours</p>
+  </div>
+  <div *ngIf="transaction.state == 'PRODUCING'">
+    <img
+      src="https://img.icons8.com/material/480/in-progress--v1.png"
+      alt=""
+      style="width: 50px; margin: 3%"
+    />
+    <p>production en cours</p>
+  </div>
+</div>
